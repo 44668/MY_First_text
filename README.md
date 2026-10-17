@@ -25,3 +25,54 @@ toutiao_backend/
 ├── .gitignore          # Git 忽略文件配置
 ├── main.py             # FastAPI 应用入口
 └── requirements.txt    # 项目依赖清单
+1. 环境准备
+请确保你的电脑上已安装以下环境：
+
+Python 3.11+ (推荐使用官方纯净版)
+
+MySQL 8.0+
+
+Redis (Windows 推荐使用 Memurai)
+
+2. 安装依赖
+在项目根目录下打开终端，创建并激活虚拟环境（可选但推荐）：
+
+bash
+python -m venv venv
+# Windows 激活
+.\venv\Scripts\activate
+# macOS/Linux 激活
+# source venv/bin/activate
+安装所需的 Python 依赖包：
+
+bash
+pip install -r requirements.txt
+pip install "redis[hiredis]" -i https://pypi.tuna.tsinghua.edu.cn/simple
+3. 配置数据库与缓存
+修改 config/db_conf.py 中的 MySQL 数据库连接 URL（请替换为你自己的用户名和密码）。
+
+修改 config/cache_conf.py 中的 Redis 配置（默认连接 localhost:6379）。
+
+4. 启动服务
+bash
+uvicorn main:app --reload
+服务启动后，访问本地接口文档：http://127.0.0.1:8000/docs
+
+📌 核心功能说明
+用户模块: 用户注册、登录、Token 认证、获取/修改个人信息、修改密码。
+
+新闻模块:
+
+获取新闻分类（带缓存）。
+
+分页获取新闻列表（带缓存）。
+
+获取新闻详情及浏览量自增。
+
+获取相关推荐新闻。
+
+收藏模块: 添加收藏、取消收藏、检查收藏状态、分页获取收藏列表。
+
+历史模块: 记录浏览历史、分页获取历史列表、删除/清空历史记录。
+
+全局异常处理: 统一捕获 SQLAlchemy 异常、HTTP 异常以及未知异常，并以标准化 JSON 格式返回。
