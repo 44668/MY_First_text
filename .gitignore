@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+env/
+
+# Node / Vue
+node_modules/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.xml
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 环境变量文件
+.env
+.env.*
+!.env.example
+
+# 日志文件
+*.log
